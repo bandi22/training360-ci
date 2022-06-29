@@ -22,6 +22,9 @@ build-job:
     - echo $CI_COMMIT_SHORT_SA
     - echo $CI_PIPELINE_ID
     - ./mvnw package
+  artifacts:
+    paths:
+      - target/*.jar
 
 integration-test-job:
   stage: integration-test

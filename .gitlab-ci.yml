@@ -8,6 +8,7 @@ cache:
 stages:
   - build
   - integration-test
+  - build-image
 #  - e2e-test
 #  - deploy
 #  - deploy-to-test
@@ -26,3 +27,9 @@ integration-test-job:
   stage: integration-test
   script:
     - echo 'Executing integration tests...'
+
+build-image-job:
+  stage: build-image
+  image: docker
+  script:
+    - docker build -t employees-app:1.0.0-$CI_PIPELINE_ID .
